@@ -9,30 +9,6 @@ data "aws_subnets" "default" {
   }
 }
 
-resource "aws_vpc_endpoint" "ecr" {
-  vpc_id              = data.aws_vpc.default.id
-  service_name        = "com.amazonaws.eu-central-1.ecr.api"
-  vpc_endpoint_type   = "Interface"
-  private_dns_enabled = true
-  subnet_ids          = data.aws_subnets.default.ids
-
-  tags = {
-    name = "for ecr API access"
-  }
-}
-
-resource "aws_vpc_endpoint" "ecr_dkr" {
-  vpc_id              = data.aws_vpc.default.id
-  service_name        = "com.amazonaws.eu-central-1.ecr.dkr"
-  vpc_endpoint_type   = "Interface"
-  private_dns_enabled = true
-  subnet_ids          = data.aws_subnets.default.ids
-
-  tags = {
-    name = "for pulling images"
-  }
-}
-
 # Default security group doesn't allow the internet in
 resource "aws_default_security_group" "default" {
   vpc_id = data.aws_vpc.default.id

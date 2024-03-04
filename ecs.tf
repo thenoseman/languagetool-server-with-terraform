@@ -31,13 +31,19 @@ resource "aws_ecs_service" "languagetool" {
 
   network_configuration {
     subnets          = data.aws_subnets.default.ids
-    assign_public_ip = true
+    assign_public_ip = true # to pull images without the VPC endpoint hassle
   }
 
   force_new_deployment = true
+  # triggers = {
+  #   newplan = plantimestamp()
+  # }
 
-  # This will tag the ENI so we can find the public ip for the output
-  enable_ecs_managed_tags = true
+  load_balancer {
+    target_group_arn = aws_lb_target_group.languagetool.arn
+    container_name   = "languagetool"
+    container_port   = local.languagetool_port
+  }
 }
 
 resource "aws_ecs_task_definition" "languagetool" {
@@ -61,8 +67,8 @@ resource "aws_ecs_task_definition" "languagetool" {
       essential = true
       portMappings = [
         {
-          containerPort = 8010
-          hostPort      = 8010
+          containerPort = local.languagetool_port
+          hostPort      = local.languagetool_port
         }
       ]
 

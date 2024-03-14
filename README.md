@@ -18,3 +18,11 @@ http://127.0.0.1:8010/v2
 EOT
 ```
 
+# State
+
+Choose a region and updaze `setup.tf`.
+Create a bucket for the terrraform state before `terraform init` in that region:
+
+`AWS_REGION=eu-central-1 aws s3api create-bucket --acl private --bucket languagetool-terraform-state --create-bucket-configuration "LocationConstraint=${AWS_REGION}"`
+
+There is no concurrent terraform check via a DynamoDB table!

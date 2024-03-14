@@ -12,3 +12,4 @@ variable "languages" {
   type    = list(string)
   default = []
 }
+

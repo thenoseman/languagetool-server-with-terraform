@@ -86,6 +86,13 @@ resource "aws_ecs_task_definition" "languagetool" {
         }
       }
 
+      healthCheck = {
+        command     = ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:${local.languagetool_port}/v2/healthcheck || exit 1"]
+        timeout     = 60
+        retries     = 5
+        startPeriod = 120
+      }
+
       environment = [
         {
           name  = "download_ngrams_for_langs"

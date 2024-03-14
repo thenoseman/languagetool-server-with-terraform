@@ -4,6 +4,13 @@ resource "aws_lb_target_group" "languagetool" {
   target_type = "ip"
   protocol    = "TCP"
   vpc_id      = data.aws_vpc.default.id
+
+  health_check {
+    healthy_threshold   = 2
+    path                = "/v2/healthcheck"
+    protocol            = "HTTP"
+    unhealthy_threshold = 5
+  }
 }
 
 resource "aws_lb" "languagetool" {
@@ -12,7 +19,7 @@ resource "aws_lb" "languagetool" {
   load_balancer_type = "network"
   ip_address_type    = "ipv4"
   security_groups    = [aws_default_security_group.default.id]
-  subnets            = [data.aws_subnets.default.ids[0]] # Just so we need only one EIP
+  subnets            = data.aws_subnets.default.ids
 
   enable_deletion_protection = true
 }

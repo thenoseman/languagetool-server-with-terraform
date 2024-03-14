@@ -1,7 +1,11 @@
 terraform {
+  backend "s3" {
+    bucket = "languagetool-terraform-state"
+    key    = "languagetool.tfstate"
 
-  backend "local" {
-    path = "terraform.tfstate"
+    # No variables allowed here!
+    # Change manually:
+    region = "eu-central-1"
   }
 
   required_providers {
@@ -20,8 +24,7 @@ terraform {
 provider "aws" {
   default_tags {
     tags = {
-      Environment = "sandbox"
-      Project     = "languagetool"
+      Project = "languagetool"
     }
   }
 }

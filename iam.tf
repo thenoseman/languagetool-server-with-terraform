@@ -22,7 +22,7 @@ data "aws_iam_policy_document" "allow_cloudwatch" {
 }
 
 resource "aws_iam_policy" "allow_cloudwatch" {
-  name   = "allow-cloudwatch"
+  name   = "languagetool-allow-cloudwatch"
   policy = data.aws_iam_policy_document.allow_cloudwatch.json
 }
 

@@ -9,7 +9,7 @@ output "languagetool_api_url" {
 
     USAGE IN OBSIDIAN:
     ------------------
-    Install the "LanguageTool Integration" Community Plugin and used
+    Install the "LanguageTool Integration" Community Plugin and use
     http://${aws_lb.languagetool.dns_name}:${local.languagetool_port}
     as the "Endpoint" Custom URL
 

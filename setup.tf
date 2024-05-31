@@ -1,11 +1,6 @@
 terraform {
-  backend "s3" {
-    bucket = "languagetool-terraform-state"
-    key    = "languagetool.tfstate"
-
-    # No variables allowed here!
-    # Change manually:
-    region = "eu-central-1"
+  backend "local" {
+    path = "languagetool.tfstate"
   }
 
   required_providers {

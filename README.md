@@ -6,6 +6,8 @@ This server can then be used with the official [chrome extension](https://chrome
 
 Once deployed you will get a notice on how to use it like this:
 
+MAKE SURE YOU HAVE docker RUNNING LOCALLY (For pull and push of the image)
+
 ```
 Outputs:
 

@@ -5,7 +5,7 @@ variable "languagetool_docker_image" {
 
 variable "languagetool_docker_image_tag" {
   type    = string
-  default = "6.5-1"
+  default = "6.5-2"
 }
 
 variable "languages" {

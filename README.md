@@ -17,12 +17,12 @@ USAGE IN CHROME EXTENSION:
 Install https://chromewebstore.google.com/detail/rechtschreibpr%C3%BCfung-%E2%80%93-lan/oldceeleldhonbafppcapldpdifcinji
 Open the options of the extension and scroll down to "Experimental Einstellungen (nur für Profis)" and select
 "Sonstiger Server – benötigt dort einen LanguageTool-Server" and enter:
-http://languagetool-1234567890.elb.eu-central-1.amazonaws.com:8010/v2
+http://languagetool-1234567890.elb.eu-central-1.amazonaws.com:8081/v2
 
 USAGE IN OBSIDIAN:
 ------------------
 Install the "LanguageTool Integration" Community Plugin and used
-http://languagetool-1234567890.elb.eu-central-1.amazonaws.com:8010
+http://languagetool-1234567890.elb.eu-central-1.amazonaws.com:8081
 as the "Endpoint" Custom URL
 EOT
 ```

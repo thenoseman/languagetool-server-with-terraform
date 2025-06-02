@@ -1,3 +1,3 @@
 locals {
-  languagetool_port = 8010
+  languagetool_port = 8081
 }
